@@ -6,10 +6,5 @@ package com.map.seoulparking;
 
 public class Test {
 
-    int a;
-    int c;
-    int b;
-    int d;
-    int e;
-
+    String a;
 }
