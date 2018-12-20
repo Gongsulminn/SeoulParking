@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.map.seoulparking.model.Model
 
 class Adapter() : RecyclerView.Adapter<Adapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,7 +24,7 @@ class Adapter() : RecyclerView.Adapter<Adapter.ViewHolder>() {
     lateinit var modelList : List<Model>
     lateinit var context :Context
 
-    constructor(modelList : List<Model> , context: Context) : this(){
+    constructor(modelList : List<Model>, context: Context) : this(){
         this.modelList = modelList;
         this.context = context
     }

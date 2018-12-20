@@ -1,4 +1,4 @@
-package com.map.seoulparking;
+package com.map.seoulparking.model;
 
 public class Model {
     private String parkingCode;

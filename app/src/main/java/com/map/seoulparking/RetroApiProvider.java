@@ -1,5 +1,7 @@
 package com.map.seoulparking;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -9,17 +11,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroApiProvider {
 
-    public static ParkRetrofit provideTestApi(){
-        return new Retrofit.Builder()
-                .baseUrl(ParkRetrofit.URL)
-                .build()
-                .create(ParkRetrofit.class);
-    }
-
     public static ParkRetrofit provideParkApi(){
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
+
         return new Retrofit.Builder()
                 .baseUrl(ParkRetrofit.AWS_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                //.client(okHttpClient)
                 .build()
                 .create(ParkRetrofit.class);
     }

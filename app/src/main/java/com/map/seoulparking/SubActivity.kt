@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import com.map.seoulparking.model.Model
 import kotlinx.android.synthetic.main.activity_sub.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +28,7 @@ class SubActivity : AppCompatActivity() {
             call.clone().enqueue(object:Callback<List<Model>>{
                 override fun onResponse(call: Call<List<Model>>?, response: Response<List<Model>>?) {
                     Log.e("TEST" ,"onResponse" + response.toString())
-                    modelList = response!!.body()
+                    modelList = response?.body()!!
                     setRecyclerview()
                     progress.visibility = View.GONE
                     btn.isEnabled = true

@@ -1,5 +1,8 @@
 package com.map.seoulparking;
 
+import com.map.seoulparking.model.Model;
+import com.map.seoulparking.model.ParkModel1;
+
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -23,6 +26,6 @@ public interface ParkRetrofit {
     @GET("park/parkinfo/all")
     Call<List<Model>> getParkAllData();
 
-    @GET("park/parkinfo/uesd")
-    Call<List<Model>> getParkUsedData();
+    @GET("park/parkinfo/used")
+    Call<List<ParkModel1>> getParkUsedData();
 }
