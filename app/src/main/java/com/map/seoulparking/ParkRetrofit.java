@@ -22,6 +22,7 @@ public interface ParkRetrofit {
     String CLIENT_ID = "4isDZgkA7H4P_GShId8h";
     String CLIENT_SECRET_ID = "sZnoL7M0Cg";
     String AWS_URL = "https://i533ffgfz5.execute-api.ap-northeast-2.amazonaws.com/gong_park/";
+    String LOCATION_URL = "https://openapi.naver.com/v1/search/local.json?query=투썸 오류";
 
     @GET("/json/GetParkInfo/{startRow}/{endRow}/")
     Call<ResponseBody> getData(
