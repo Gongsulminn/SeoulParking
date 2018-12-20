@@ -5,5 +5,8 @@ package com.map.seoulparking;
  */
 
 public class Test {
+
+    int a;
     int c;
+
 }

@@ -36,4 +36,12 @@ public class RetroApiProvider {
                 .build()
                 .create(ParkRetrofit.class);
     }
+
+    public static ParkRetrofit provideLocationApi(){
+        return new Retrofit.Builder()
+                .baseUrl(ParkRetrofit.AWS_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ParkRetrofit.class);
+    }
 }
