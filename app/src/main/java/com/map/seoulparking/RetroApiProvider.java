@@ -23,4 +23,17 @@ public class RetroApiProvider {
                 .build()
                 .create(ParkRetrofit.class);
     }
+
+    public static ParkRetrofit provideSearchApi(){
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
+
+        return new Retrofit.Builder()
+                .baseUrl(ParkRetrofit.SEARCH_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                //.client(okHttpClient)
+                .build()
+                .create(ParkRetrofit.class);
+    }
 }
