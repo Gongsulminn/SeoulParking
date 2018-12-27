@@ -1,0 +1,89 @@
+<RelativeLayout
+    android:id="@+id/main_bottom_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="20dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="100dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/main_bottom_parkicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/clickpoff"
+        android:layout_above="@+id/dialog_bottom_addr"
+        />
+    <TextView
+        android:id="@+id/main_bottom_parkname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="parkname"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_toRightOf="@id/main_bottom_parkicon"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/black" />
+    <TextView
+        android:id="@+id/main_bottom_parkaddr"
+        android:layout_below="@+id/main_bottom_parkname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="parkaddr"
+        />
+    <TextView
+        android:id="@+id/main_bottom_parktel"
+        android:layout_below="@+id/main_bottom_parkaddr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="parktel"
+        />
+    <TextView
+        android:id="@+id/main_bottom_weekdaybegin"
+        android:layout_below="@id/main_bottom_parktel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="weekdaybegin"
+        />
+    <TextView
+        android:id="@+id/main_bottom_weekdayend"
+        android:layout_below="@id/main_bottom_weekdaybegin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="weekdayend"
+        />
+    <TextView
+        android:id="@+id/main_bottom_weekendbegin"
+        android:layout_below="@+id/main_bottom_weekdayend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="weekendbegin"
+        />
+    <TextView
+        android:id="@+id/main_bottom_weekendend"
+        android:layout_below="@+id/main_bottom_weekendbegin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="weekendend"
+        />
+    <ImageView
+        android:id="@+id/main_bottom_favoritepark"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/staroff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+    <Button
+        android:id="@+id/main_bottom_detailpark"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/main_bottom_favoritepark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

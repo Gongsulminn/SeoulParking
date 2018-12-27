@@ -1,6 +1,6 @@
 package com.map.seoulparking;
 
-import com.map.seoulparking.model.ParkModel1;
+import com.map.seoulparking.model.ParkModel;
 import com.map.seoulparking.model.SearchModel;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public interface ParkRetrofit {
 //    Call<List<Model>> getParkAllData();
 
     @GET("park/parkinfo/used")
-    Call<List<ParkModel1>> getParkUsedData();
+    Call<List<ParkModel>> getParkUsedData();
 
     @GET("local.json")
     Call<SearchModel> getLocationModel(

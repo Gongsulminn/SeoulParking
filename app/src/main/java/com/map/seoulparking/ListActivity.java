@@ -77,7 +77,7 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        recycler.setAdapter(new SearchResultAdapter(itemList, R.layout.list_item));
+        recycler.setAdapter(new SearchResultAdapter(ListActivity.this,itemList, R.layout.list_item));
         recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recycler.setItemAnimator(new DefaultItemAnimator());
     }

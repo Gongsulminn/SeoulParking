@@ -3,7 +3,7 @@
     <data>
         <variable
             name="park"
-            type="com.map.seoulparking.model.ParkModel1"/>
+            type="com.map.seoulparking.model.ParkModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,5 +1,7 @@
 package com.map.seoulparking;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -14,12 +16,15 @@ public class RetroApiProvider {
     public static ParkRetrofit provideParkApi(){
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                                    .addInterceptor(loggingInterceptor)
+                                    .readTimeout(60 , TimeUnit.SECONDS)
+                                    .build();
 
         return new Retrofit.Builder()
                 .baseUrl(ParkRetrofit.AWS_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                //.client(okHttpClient)
+                .client(okHttpClient)
                 .build()
                 .create(ParkRetrofit.class);
     }

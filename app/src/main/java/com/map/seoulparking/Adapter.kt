@@ -1,4 +1,3 @@
-package com.map.seoulparking
 
 class Adapter() {
 //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,8 +19,9 @@ class Adapter() {
 //        this.modelList = modelList;
 //        this.context = context
 //    }
-//
-////    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+//0
+
+/// .///    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
 ////        Log.e("onCreateViewHolder" , "onCreateViewHolder")
 ////        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_sub , parent , false))
 ////    }

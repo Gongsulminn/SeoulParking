@@ -1,10 +1,15 @@
 package com.map.seoulparking.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.map.seoulparking.R;
@@ -19,8 +24,11 @@ import java.util.List;
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder> {
     List<SearchResultModel> itemList;
     private int itemLayout;
+    private Context context;
 
-    public SearchResultAdapter(List<SearchResultModel> itemList, int itemLayout){
+
+    public SearchResultAdapter(Context context,List<SearchResultModel> itemList, int itemLayout){
+        this.context = context;
         this.itemList = itemList;
         this.itemLayout = itemLayout;
     }
@@ -33,10 +41,22 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchResultAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull final SearchResultAdapter.ViewHolder viewHolder, int position) {
         SearchResultModel item = itemList.get(position);
         viewHolder.recyclerTitle.setText(item.getTitle());
         viewHolder.recyclerLocation.setText(item.getLocation());
+
+        viewHolder.recyclerAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("눌림?",viewHolder.recyclerLocation.getText().toString());
+
+                Intent intent = ((Activity) context).getIntent();
+                intent.putExtra("address",viewHolder.recyclerLocation.getText().toString());
+                ((Activity)context).setResult(Activity.RESULT_OK,intent);
+                ((Activity) context).finish();
+            }
+        });
     }
 
     @Override
@@ -46,12 +66,14 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout recyclerAll;
         TextView recyclerTitle;
         TextView recyclerLocation;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            recyclerAll = (LinearLayout) itemView.findViewById(R.id.recyclerAll);
             recyclerTitle = (TextView) itemView.findViewById(R.id.recyclerTitle);
             recyclerLocation = (TextView) itemView.findViewById(R.id.recyclerLocation);
         }

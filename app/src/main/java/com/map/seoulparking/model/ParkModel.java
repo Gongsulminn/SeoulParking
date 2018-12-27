@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by user on 2018-12-18.
  */
 
-public class ParkModel1 implements Parcelable {
+public class ParkModel implements Parcelable {
     @SerializedName("parkingCode")
     @Expose
     private String parkingCode;
@@ -261,10 +261,10 @@ public class ParkModel1 implements Parcelable {
         dest.writeString(this.lng);
     }
 
-    public ParkModel1() {
+    public ParkModel() {
     }
 
-    public ParkModel1(String parkingCode, String parkingName, String addr, String tel, String payNM, String weekdayBeginTime, String weekdayEndTime, String weekendBeginTime, String weekendEndTime, String holidayBeginTime, String holidayEndTime, String saturdayPayNM, String holidayPayNM, String fullTimeMonthly, String rates, String timeRate, String addRates, String addTimeRate, String lat, String lng) {
+    public ParkModel(String parkingCode, String parkingName, String addr, String tel, String payNM, String weekdayBeginTime, String weekdayEndTime, String weekendBeginTime, String weekendEndTime, String holidayBeginTime, String holidayEndTime, String saturdayPayNM, String holidayPayNM, String fullTimeMonthly, String rates, String timeRate, String addRates, String addTimeRate, String lat, String lng) {
         this.parkingCode = parkingCode;
         this.parkingName = parkingName;
         this.addr = addr;
@@ -287,7 +287,7 @@ public class ParkModel1 implements Parcelable {
         this.lng = lng;
     }
 
-    protected ParkModel1(Parcel in) {
+    protected ParkModel(Parcel in) {
         this.parkingCode = in.readString();
         this.parkingName = in.readString();
         this.addr = in.readString();
@@ -310,15 +310,15 @@ public class ParkModel1 implements Parcelable {
         this.lng = in.readString();
     }
 
-    public static final Creator<ParkModel1> CREATOR = new Creator<ParkModel1>() {
+    public static final Creator<ParkModel> CREATOR = new Creator<ParkModel>() {
         @Override
-        public ParkModel1 createFromParcel(Parcel source) {
-            return new ParkModel1(source);
+        public ParkModel createFromParcel(Parcel source) {
+            return new ParkModel(source);
         }
 
         @Override
-        public ParkModel1[] newArray(int size) {
-            return new ParkModel1[size];
+        public ParkModel[] newArray(int size) {
+            return new ParkModel[size];
         }
     };
 }
