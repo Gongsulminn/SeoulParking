@@ -232,6 +232,7 @@ public class ParkModel implements Parcelable {
         this.lng = lng;
     }
 
+
     @Override
     public int describeContents() {
         return 0;

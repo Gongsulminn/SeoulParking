@@ -1,7 +1,9 @@
 package com.map.seoulparking;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
@@ -132,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         if (appDataBase.parkDao().isFavorite(favoritePark.getParkingCode()) == 1 ){
                             appDataBase.parkDao().deleteData(favoritePark);
                             isFavorite = false;
-
                         }
                         else{
                             appDataBase.parkDao().insertData(favoritePark);
@@ -151,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         });
                     }
                 }).start();
-                startActivity(new Intent(MainActivity.this , FavoriteActivity.class));
             }
         });
 
@@ -178,6 +178,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 startActivityForResult(intent, 1);
+            }
+        });
+
+        binding.mainFavoritelist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this , FavoriteActivity.class));
             }
         });
 
@@ -319,7 +326,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     for (Marker marker : markers){
                         marker.setVisible(true);
                     }
-
                 } else {
                     for (Marker marker : markers){
                         Location locationCamera = new Location("CAMERA");
@@ -335,7 +341,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         else
                             marker.setVisible(true);
                     }
-
                 }
 //                Location locationCamera = new Location("CAMERA");
 //                locationCamera.setLatitude(cameraPosition.target.latitude);
@@ -346,7 +351,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                    Location locationMarker = new Location("makrger");
 //                    locationMarker.setLatitude(marker.getPosition().latitude);
 //                    locationMarker.setLongitude(marker.getPosition().longitude);
-//
+//[
 //                    if (locationCamera.distanceTo(locationMarker) > 3000)
 //                        marker.setVisible(false);
 //                    else
@@ -357,7 +362,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-
 
     LocationSource.OnLocationChangedListener onLocationChangedListener = new LocationSource.OnLocationChangedListener() {
         @Override
@@ -477,5 +481,33 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return bf.toString();
     }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        if (mBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED ){
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+            markers.get(mBeforeFocusMarker).setIcon(OverlayImage.fromResource(R.drawable.clickpoff));
+        }
 
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("서울 공영 주차 정보 ")
+                .setMessage("앱을 종료하시겠습니까?")
+                .setPositiveButton("예",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+                .setNegativeButton("아니요",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        }
+                );
+        builder.show();
+
+    }
 }

@@ -31,8 +31,6 @@ class FavoritAdapter(val context: Context , val favoritModelList: List<FavoriteP
          init {
             binding = DataBindingUtil.bind(itemView)!!
          }
-
     }
-
 
 }

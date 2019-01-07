@@ -24,6 +24,7 @@ class DetailDialog() : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         detailModel = arguments!!.getParcelable(PARKMODEL)
         binding = DataBindingUtil.inflate(inflater , R.layout.dialog_main , container , false)
+        binding.parkmodel = detailModel
         return binding.root
     }
 

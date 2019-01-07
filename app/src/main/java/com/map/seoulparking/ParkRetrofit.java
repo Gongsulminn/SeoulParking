@@ -39,6 +39,6 @@ public interface ParkRetrofit {
     Call<SearchModel> getLocationModel(
             @Header("X-Naver-Client-Id") String clientId,
             @Header("X-Naver-Client-Secret") String clientSecretId,
-            @Query("query") String title);
-
+            @Query("query") String title,
+            @Query("display") int display);
 }

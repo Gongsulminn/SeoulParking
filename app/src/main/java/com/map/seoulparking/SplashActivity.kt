@@ -28,7 +28,6 @@ class SplashActivity : AppCompatActivity(){
 
         // 여기를 repo로 만들기
         RetroApiProvider.provideParkApi().getParkUsedData().clone().enqueue(object: Callback<List<ParkModel>>{
-
             override fun onResponse(call: Call<List<ParkModel>>?, response: Response<List<ParkModel>>?) {
                 // var model: List<ParkModel> = response!!.body()
 
@@ -40,6 +39,7 @@ class SplashActivity : AppCompatActivity(){
                         intent.putParcelableArrayListExtra("data" , model)
                         intent.putExtra("locationBoolean",true)
                         startActivity(intent)
+                        finish()
                     }
 
                     override fun onPermissionDenied(deniedPermissions: java.util.ArrayList<String>) {
@@ -47,8 +47,8 @@ class SplashActivity : AppCompatActivity(){
                         var intent: Intent = Intent(this@SplashActivity , MainActivity::class.java)
                         intent.putParcelableArrayListExtra("data" , model)
                         intent.putExtra("locationBoolean",false)
-
                         startActivity(intent)
+                        finish()
                     }
                 }
 

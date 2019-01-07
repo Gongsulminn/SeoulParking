@@ -1,200 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="parkmodel"
-            type="com.map.seoulparking.model.ParkModel"/>
+            type="com.map.seoulparking.model.ParkModel" />
+
         <variable
             name="isFavorite"
-            type="int"/>
+            type="int" />
 
     </data>
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:weightSum="1"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="9">
+            android:layout_weight="0.1"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/shape"
-                android:layout_weight="1">
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape">
 
                 <ImageView
-                    android:src="@drawable/search"
-                    android:gravity="center"
-                    android:layout_weight="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textStyle="bold"
+                    android:src="@drawable/search"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:textColor="#bdbdbd"
                     android:text="지역 또는 주차장명 검색"
-                    android:textSize="18sp"/>
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <ImageView
-                android:src="@drawable/staron"
-                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:id="@+id/main_favoritelist"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="10"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/staron" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="9.2">
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:orientation="horizontal">
 
             <ImageView
-                android:src="@drawable/placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="10"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/placeholder" />
 
             <TextView
                 android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_weight="1"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:textColor="@color/white"
+                android:gravity="center_vertical" />
 
         </LinearLayout>
 
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:fitsSystemWindows="true"
-        >
-
-        <LinearLayout
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/main_favoritelist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <fragment
-                android:id="@+id/map"
-                android:name="com.naver.maps.map.MapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/mainBottomLayout"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            app:behavior_peekHeight="300dp"
-            app:behavior_hideable="true"
-            app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-            >
+            android:layout_height="0dp"
+            android:layout_weight="0.85">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/main_bottom_parkname"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="@{parkmodel.parkingName}"
-                    android:textSize="18dp"
-                    android:textColor="@color/black"
-                    />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/main_bottom_favoritepark"
-                    android:layout_weight="6"
-                    android:src="@drawable/staroff"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:imageRes = "@{ isFavorite == 1 ? @drawable/staron : @drawable/staroff }"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/main_bottom_parkaddr"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@{parkmodel.addr}"
-                    />
+                    android:layout_height="wrap_content" />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.naver.maps.map.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 
-            <LinearLayout
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/mainBottomLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:behavior_hideable="true"
+                app:behavior_peekHeight="300dp"
+                app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/main_bottom_parktel"
-                    android:text="@{parkmodel.tel}"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/main_bottom_detailpark"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="요금정보" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/main_bottom_call"
+                    <TextView
+                        android:id="@+id/main_bottom_parkname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="@{parkmodel.parkingName}"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <ImageView
+                        android:id="@+id/main_bottom_favoritepark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:src="@drawable/staroff"
+                        android:visibility="invisible"
+                        app:imageRes="@{ isFavorite == 1 ? @drawable/staron : @drawable/staroff }" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="전화걸기"
-                    />
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/main_bottom_parkaddr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@{parkmodel.addr}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/main_bottom_parktel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@{parkmodel.tel}" />
+
+
+                </LinearLayout>
+1
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/main_bottom_detailpark"
+                        android:background="@drawable/buttonshape"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="요금정보" />
+
+                    <Button
+                        android:id="@+id/main_bottom_call"
+                        android:background="@drawable/buttonshape"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="전화걸기" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </android.support.design.widget.CoordinatorLayout>
+        </android.support.design.widget.CoordinatorLayout>
     </LinearLayout>
 </layout>

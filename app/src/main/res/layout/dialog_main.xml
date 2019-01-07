@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="parkmodel"
+            type="com.map.seoulparking.model.ParkModel"/>
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/won" />
+                    android:src="@drawable/won"
+                    android:layout_marginRight="5dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -38,23 +42,29 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:text="기본 요금(시간) : 1500원 / 30분" />
+                android:layout_height="wrap_content"
+                android:text="기본 요금(시간) : "
+                rate = "@{parkmodel.timeRate}"
+                price = "@{parkmodel.rates}"
+                />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:text="추가 요금(시간) : 500원 / 10분" />
+                android:layout_height="wrap_content"
+                android:text="추가 요금(시간) : "
+                rate = "@{parkmodel.addTimeRate}"
+                price = "@{parkmodel.addRates}"
+                />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:text="정기권 요금(시간) :80000원" />
+                android:layout_height="wrap_content"
+                android:text="정기권 요금(월) : "
+                price="@{parkmodel.fullTimeMonthly}"
+                />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.2"
@@ -71,23 +81,22 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="15dp"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/time" />
+                    android:src="@drawable/time"
+                    android:layout_marginRight="5dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -102,21 +111,27 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="평일 운영 시간 : 07:00 " />
+                android:layout_height="wrap_content"
+                android:text="평일 운영 시간 : "
+                starttime="@{parkmodel.weekdayBeginTime}"
+                endtime="@{parkmodel.weekdayEndTime}"
+                />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="토요일 운영 시간 : 24시간 운영" />
+                android:layout_height="wrap_content"
+                android:text="토요일 운영 시간 : "
+                starttime="@{parkmodel.weekendBeginTime}"
+                endtime="@{parkmodel.weekendEndTime}"
+                />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="공휴일 운영 시간 : 24시간 운영" />
+                android:layout_height="wrap_content"
+                android:text="공휴일 운영 시간 : "
+                starttime="@{parkmodel.holidayBeginTime}"
+                endtime="@{parkmodel.holidayEndTime}"
+                />
 
         </LinearLayout>
 

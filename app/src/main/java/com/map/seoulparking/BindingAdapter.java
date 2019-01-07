@@ -21,6 +21,16 @@ public class BindingAdapter {
         time.insert(4, "~");
         time.insert(2 , ":");
         time.insert(8 , ":");
-        textView.setText(time);
+        textView.setText(textView.getText().toString() + time);
+    }
+
+    @android.databinding.BindingAdapter(value = {"rate" , "price"} , requireAll = false)
+    public static void setTimeRate(TextView textView , String rate , String price){
+        if (rate != null)
+            textView.setText(textView.getText() + price + "원" + " / " + rate +"분");
+        else{
+            price = price == null ? "0" : price;
+            textView.setText(textView.getText() + price + "원");
+        }
     }
 }

@@ -1,55 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="favoritemodel"
-            type="com.map.seoulparking.sqlite.FavoritePark">
-        </variable>
+            type="com.map.seoulparking.sqlite.FavoritePark" />
+
         <variable
             name="parkmodel"
-            type="com.map.seoulparking.model.ParkModel">
-        </variable>
+            type="com.map.seoulparking.model.ParkModel" />
 
     </data>
-
-    <android.support.constraint.ConstraintLayout
+    <android.support.v7.widget.CardView
+        app:cardElevation="5dp"
+        app:cardCornerRadius="2dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/favorite_item_parkingname"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@{favoritemodel.parkingName}"
-            app:layout_constraintBottom_toTopOf="@+id/favorite_item_parkingtel"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <!--android:text="@{favoritemodel.parkingName}"-->
+            android:layout_height="wrap_content">
 
 
-        <TextView
-            android:id="@+id/favorite_item_parkingtel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{favoritemodel.tel}"
-            app:layout_constraintBottom_toTopOf="@+id/favorite_item_parkingaddr"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/favorite_item_parkingname" />
+            <TextView
+                android:id="@+id/favorite_item_parkingname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{favoritemodel.parkingName}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/favorite_item_parkingtel"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--android:text="@{favoritemodel.parkingName}"-->
 
-        <TextView
-            android:id="@+id/favorite_item_parkingaddr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{favoritemodel.addr}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/favorite_item_parkingtel" />
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/favorite_item_parkingtel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{favoritemodel.tel}"
+                app:layout_constraintBottom_toTopOf="@+id/favorite_item_parkingaddr"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite_item_parkingname" />
+
+            <TextView
+                android:id="@+id/favorite_item_parkingaddr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{favoritemodel.addr}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite_item_parkingtel" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
 </layout>
